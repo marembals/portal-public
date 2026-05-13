@@ -1,0 +1,12 @@
+services:
+  portal:
+    image: nginx:alpine
+    container_name: docker-portal
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:3002:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+      - ./css:/usr/share/nginx/html/css
+      - ./js:/usr/share/nginx/html/js
+    command: nginx -g 'daemon off;'

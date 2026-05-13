@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Portal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="shell">
+        <header class="header">
+            <div class="header-left">
+                <div class="brand">
+                    <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                    <h1>Services Portal</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <span class="pulse-badge"><span class="pulse-dot"></span>Live</span>
+                <button id="refreshBtn" class="btn-icon" title="Refresh">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="dashboard">
+            <!-- GPU Metrics -->
+            <section class="panel gpu-panel" id="gpuMetrics">
+                <div class="panel-placeholder">Loading GPU metrics&hellip;</div>
+            </section>
+
+            <!-- System Metrics -->
+            <section class="panel-row sys-row">
+                <div class="panel mini-panel">
+                    <div class="mini-label">CPU Usage</div>
+                    <div class="mini-gauge">
+                        <svg class="ring" viewBox="0 0 36 36">
+                            <path class="ring-bg" d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="ring-fg" id="cpuRing" d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="0, 100"/>
+                        </svg>
+                        <span class="ring-text" id="cpuValue">--%</span>
+                    </div>
+                </div>
+                <div class="panel mini-panel">
+                    <div class="mini-label">Memory</div>
+                    <div class="mini-gauge">
+                        <svg class="ring" viewBox="0 0 36 36">
+                            <path class="ring-bg" d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="ring-fg" id="memRing" d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="0, 100"/>
+                        </svg>
+                        <span class="ring-text" id="memValue">--</span>
+                    </div>
+                    <div class="mini-sub" id="memDetail"></div>
+                </div>
+                <div class="panel mini-panel">
+                    <div class="mini-label">Containers</div>
+                    <div class="mini-big" id="containerCount">--</div>
+                    <div class="mini-sub">running</div>
+                </div>
+            </section>
+
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="searchInput" placeholder="Filter services&hellip;">
+                </div>
+                <div class="filters">
+                    <button class="chip active" data-filter="all">All</button>
+                    <button class="chip" data-filter="ai">AI</button>
+                    <button class="chip" data-filter="observability">Observability</button>
+                    <button class="chip" data-filter="database">Database</button>
+                    <button class="chip" data-filter="documents">Documents</button>
+                    <button class="chip" data-filter="benchmarks">Benchmarks</button>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <section class="grid" id="servicesGrid"></section>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
